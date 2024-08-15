@@ -1,4 +1,5 @@
 const express = require("express")
+const path = require("path")
 
 const app = express()
 
@@ -18,5 +19,11 @@ app.timeout = 3000000;
 const user = require("./routes/user")
 
 app.use("/api/v1/user",user)
+
+app.use(express.static(path.join(__dirname,"../frontend/build")))
+
+app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,"../frontend/build/index.html"))
+})
 
 module.exports = app
