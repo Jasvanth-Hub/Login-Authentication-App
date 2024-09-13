@@ -32,23 +32,36 @@ To get started, clone the repository:
 
 ```bash
 git clone https://github.com/your-username/project-name.git
+```
 
 ### Frontend Setup
 1. Navigate to the project directory:
+   ```bash 
   cd project-name
-2. Navigate to the frontend directory:
+  ```
+3. Navigate to the frontend directory:
+   ```bash 
   cd frontend
-3. Install frontend dependencies:
+```
+4. Install frontend dependencies:
+   ```bash 
   npm install
-4. Start the frontend development server:
+  ```
+5. Start the frontend development server:
+   ```bash 
   npm start
+```
 
 ### Backend Setup
 1. Navigate to the backend directory:
+   ```bash 
   cd ../backend
-2. Install backend dependencies:
+  ```
+3. Install backend dependencies:
+   ```bash 
   npm install
-3. Set up environment variables:
+```
+4. Set up environment variables:
   Create a `.env` file in the `backend` directory and configure the following variables:
 
   MONGO_URI=your_mongo_db_connection_string
@@ -58,7 +71,9 @@ git clone https://github.com/your-username/project-name.git
   JWT_SECRET=your_jwt_secret
 
 4. Start the backend development server:
+  ```bash 
   npm run dev
+  ```
 
 ## Running the Application
 Once both frontend and backend servers are running, open your browser and navigate to `http://localhost:3000` to access the application.
