@@ -36,29 +36,29 @@ git clone https://github.com/your-username/project-name.git
 
 ### Frontend Setup
 1. Navigate to the project directory:
-   ```bash 
+```bash 
   cd project-name
-  ```
+```
 3. Navigate to the frontend directory:
-   ```bash 
+```bash 
   cd frontend
 ```
 4. Install frontend dependencies:
-   ```bash 
+```bash 
   npm install
-  ```
+```
 5. Start the frontend development server:
-   ```bash 
+```bash 
   npm start
 ```
 
 ### Backend Setup
 1. Navigate to the backend directory:
-   ```bash 
+ ```bash 
   cd ../backend
-  ```
+ ```
 3. Install backend dependencies:
-   ```bash 
+```bash 
   npm install
 ```
 4. Set up environment variables:
