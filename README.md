@@ -64,11 +64,11 @@ git clone https://github.com/your-username/project-name.git
 4. Set up environment variables:
   Create a `.env` file in the `backend` directory and configure the following variables:
 
-  MONGO_URI=your_mongo_db_connection_string
-  CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-  CLOUDINARY_API_KEY=your_cloudinary_api_key
-  CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-  JWT_SECRET=your_jwt_secret
+  - MONGO_URI=your_mongo_db_connection_string
+  - CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+  - CLOUDINARY_API_KEY=your_cloudinary_api_key
+  - CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+  - JWT_SECRET=your_jwt_secret
 
 4. Start the backend development server:
   ```bash 
