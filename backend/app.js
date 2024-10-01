@@ -1,9 +1,17 @@
 const express = require("express")
 const path = require("path")
+const cors = require("cors");
+const cookieParser = require("cookie-parser")
 
 const app = express()
 
-const cookieParser = require("cookie-parser")
+app.use(cors({
+    origin: "https://login-authentication-app-z451.onrender.com", // Allow your frontend's URL
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    credentials: true 
+}));
+
+
 
 if(process.env.NODE_ENV!=="production")
 {
