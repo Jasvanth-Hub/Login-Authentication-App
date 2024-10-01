@@ -4,7 +4,6 @@ import {Typography,Button} from "@mui/material"
 import {Link} from "react-router-dom"
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../Actions/User'
-import { useAlert } from '../../AlertProvider'
 
 
 const Login = () => {
@@ -12,11 +11,10 @@ const Login = () => {
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
   const dispatch = useDispatch()
-  const showAlert = useAlert()
 
   const loginHandler = (e) => {
     e.preventDefault()
-    dispatch(loginUser(email, password,showAlert))
+    dispatch(loginUser(email, password))
   }
 
   return (

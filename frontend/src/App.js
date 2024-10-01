@@ -10,17 +10,15 @@ import Home from './Components/Home/Home';
 import Account from './Components/Account/Account';
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import UpdateUserPassword from './Components/UpdatePassword/UpdatePassword';
-import { useAlert } from './AlertProvider';
 
 
 function App() {
 
   const dispatch = useDispatch()
-  const showAlert = useAlert()
 
   useEffect(() => {
-    dispatch(loadUser(showAlert))
-  }, [])
+    dispatch(loadUser())
+  },[])
 
   const {isAuthenticated} = useSelector((state)=>state.user)
   

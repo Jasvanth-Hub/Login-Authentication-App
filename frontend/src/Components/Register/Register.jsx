@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from'react-redux'
 import { registerUser } from '../../Actions/User'
 import "./Register.css"
-import { useAlert } from '../../AlertProvider'
 
 
 const Register = () => {
@@ -15,7 +14,6 @@ const Register = () => {
     const [avatar,setAvatar] = useState("")
     
     const dispatch = useDispatch()
-    const showAlert = useAlert()
 
     const handleImageChange = (e)=>{
         const file = e.target.files[0]
@@ -32,7 +30,7 @@ const Register = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(registerUser(name, email,password,avatar,showAlert));
+        dispatch(registerUser(name, email,password,avatar));
     }
     
 

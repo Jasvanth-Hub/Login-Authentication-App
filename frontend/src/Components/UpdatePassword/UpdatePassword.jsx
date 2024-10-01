@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Typography, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { UpdatePassword } from "../../Actions/User";
-import { useAlert } from "../../AlertProvider";
 
 
 const UpdateUserPassword = () => {
@@ -11,13 +10,12 @@ const UpdateUserPassword = () => {
     const [newPassword, setNewPassword] = useState("");
 
     const dispatch = useDispatch();
-    const showAlert = useAlert()
 
     
     
     const submitHandler =  (e) => {
         e.preventDefault();
-         dispatch(UpdatePassword(oldPassword, newPassword, showAlert));
+         dispatch(UpdatePassword(oldPassword, newPassword));
     };
 
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 const BASE_URL = 'https://login-authentication-app.onrender.com/api/v1/user';
 
 
-export const loginUser = (email, password,showAlert) => async (dispatch) => {
+export const loginUser = (email, password) => async (dispatch) => {
     try {
         dispatch({
             type: "LoginRequest",
@@ -26,26 +26,23 @@ export const loginUser = (email, password,showAlert) => async (dispatch) => {
                 type: "LoginSuccess",
                 payload: response.data,
             });
-            showAlert(response.data.message)
         } else if (response.status === 400) {
             dispatch({
                 type: "LoginError",
                 payload: response.data,
             });
-            showAlert(response.data.message)
         }
     } catch (error) {
         dispatch({
             type: "LoginFailure",
             payload: error.message,
         });
-        showAlert(error.message)
     }
 };
 
 
 
-export const loadUser = (showAlert) => async (dispatch) => {
+export const loadUser = () => async (dispatch) => {
     try {
         dispatch({
             type: "LoadUserRequest"
@@ -68,7 +65,6 @@ export const loadUser = (showAlert) => async (dispatch) => {
                 type: "LoadUserError",
                 payload: response.data,
             });
-            showAlert(response.data.message)
         }
 
     } catch (error) {
@@ -76,12 +72,11 @@ export const loadUser = (showAlert) => async (dispatch) => {
             type: "LoadUserFailure",
             payload: error.message
         })
-        showAlert("Please Login ..")
     }
 }
 
 
-export const registerUser = (name, email, password, avatar,showAlert) => async (dispatch) => {
+export const registerUser = (name, email, password, avatar) => async (dispatch) => {
     try {
 
         dispatch({
@@ -101,13 +96,11 @@ export const registerUser = (name, email, password, avatar,showAlert) => async (
                 type: "RegisterSuccess",
                 payload: response.data
             })
-            showAlert(response.data.message)
         } else if (response.status === 400) {
             dispatch({
                 type: "RegisterError",
                 payload: response.data,
             });
-            showAlert(response.data.message)
         }
     } catch (error) {
         dispatch({
@@ -117,7 +110,7 @@ export const registerUser = (name, email, password, avatar,showAlert) => async (
     }
 }
 
-export const UpdateUser = (name, email, avatar,showAlert) => async (dispatch) => {
+export const UpdateUser = (name, email, avatar) => async (dispatch) => {
     try {
 
         dispatch({
@@ -134,18 +127,16 @@ export const UpdateUser = (name, email, avatar,showAlert) => async (dispatch) =>
             type: "UpdateUserSuccess",
             payload: data
         })
-        showAlert(data.message)
 
     } catch (error) {
         dispatch({
             type: "UpdateUserFailure",
             payload: error.message
         });
-        showAlert(error.message)
     }
 }
 
-export const UpdatePassword = (oldPassword, newPassword,showAlert) => async (dispatch) => {
+export const UpdatePassword = (oldPassword, newPassword) => async (dispatch) => {
     try {
 
         dispatch({
@@ -165,25 +156,22 @@ export const UpdatePassword = (oldPassword, newPassword,showAlert) => async (dis
                 type: "UpdatePasswordSuccess",
                 payload: response.data
             })
-            showAlert(response.data.message)
         } else if (response.status === 400) {
             dispatch({
                 type: "UpdatePasswordError",
                 payload: response.data,
             });
-            showAlert(response.data.message)
         }
     } catch (error) {
         dispatch({
             type: "UpdatePasswordFailure",
             payload: error.message
         })
-        showAlert(error.message)
     }
 }
 
 
-export const logoutUser = (showAlert) => async (dispatch) => {
+export const logoutUser = () => async (dispatch) => {
     try {
         dispatch({
             type: "LogoutUserRequest",
@@ -195,18 +183,16 @@ export const logoutUser = (showAlert) => async (dispatch) => {
             type: "LogoutUserSuccess",
             payload: data
         });
-        showAlert(data.message)
     } catch (error) {
         dispatch({
             type: "LogoutUserFailure",
             payload: error.message
         });
-        showAlert(error.message)
     }
 };
 
 
-export const deleteMyProfile = (showAlert) => async (dispatch) => {
+export const deleteMyProfile = () => async (dispatch) => {
     try {
         dispatch({
             type: "DeleteProfileRequest",
@@ -218,12 +204,10 @@ export const deleteMyProfile = (showAlert) => async (dispatch) => {
             type: "DeleteProfileSuccess",
             payload: data,
         });
-        showAlert(data.message)
     } catch (error) {
         dispatch({
             type: "DeleteProfileFailure",
             payload: error.message,
         });
-        showAlert("Account deleted ..")
     }
 };

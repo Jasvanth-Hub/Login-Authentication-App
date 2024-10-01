@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./UpdateProfile.css";
 import { loadUser, UpdateUser } from "../../Actions/User";
-import { useAlert } from "../../AlertProvider";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -16,7 +15,6 @@ const UpdateProfile = () => {
   const [avatarPrev, setAvatarPrev] = useState(user && user.avatar ? user.avatar.url : '');
 
   const dispatch = useDispatch();
-  const showAlert = useAlert()
   const navigate = useNavigate()
 
 
@@ -37,7 +35,7 @@ const UpdateProfile = () => {
 
   const submitHandler =  (e) => {
     e.preventDefault();
-     dispatch(UpdateUser(name, email, avatar,showAlert));
+     dispatch(UpdateUser(name, email, avatar));
       dispatch(loadUser());
       navigate('/account');
   };

@@ -4,26 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteMyProfile, logoutUser } from "../../Actions/User";
 import "./Account.css";
-import { useAlert } from "../../AlertProvider";
 
 const Account = () => {
 
 
 
   const dispatch = useDispatch();
-  const showAlert = useAlert()
 
   const { user } = useSelector((state) => state.user);
 
   const logoutHandler =  () => {
-    dispatch(logoutUser(showAlert));
+    dispatch(logoutUser());
   };
 
   const deleteProfileHandler = () => {
     const ok = window.confirm("Are you sure want to delete your Profile.")
     if(ok)
     {
-      dispatch(deleteMyProfile(showAlert));
+      dispatch(deleteMyProfile());
     }
   };
 
