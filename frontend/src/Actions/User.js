@@ -1,4 +1,5 @@
 import axios from 'axios';
+const BASE_URL = 'https://login-authentication-app.onrender.com/api/v1/user';
 
 
 export const loginUser = (email, password,showAlert) => async (dispatch) => {
@@ -8,7 +9,7 @@ export const loginUser = (email, password,showAlert) => async (dispatch) => {
         });
 
         const response = await axios.post(
-            '/api/v1/user/login',
+            `${BASE_URL}/login`,
             { email, password },
             {
                 headers: {
@@ -50,7 +51,7 @@ export const loadUser = (showAlert) => async (dispatch) => {
             type: "LoadUserRequest"
         })
 
-        const response = await axios.get('/api/v1/user/myprofile', {
+        const response = await axios.get(`${BASE_URL}/myprofile`, {
             validateStatus: function (status) {
                 return status < 500;
             },
@@ -87,7 +88,7 @@ export const registerUser = (name, email, password, avatar,showAlert) => async (
             type: "RegisterRequest"
         })
 
-        const response = await axios.post('/api/v1/user/register', { name, email, password, avatar }, {
+        const response = await axios.post(`${BASE_URL}/register`, { name, email, password, avatar }, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -123,7 +124,7 @@ export const UpdateUser = (name, email, avatar,showAlert) => async (dispatch) =>
             type: "UpdateUserRequest"
         })
 
-        const { data } = await axios.put('/api/v1/user/updateprofile', { name, email, avatar }, {
+        const { data } = await axios.put(`${BASE_URL}/updateprofile`, { name, email, avatar }, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -151,7 +152,7 @@ export const UpdatePassword = (oldPassword, newPassword,showAlert) => async (dis
             type: "UpdatePasswordRequest"
         })
 
-        const response = await axios.put('/api/v1/user/updatepassword', { oldPassword, newPassword }, {
+        const response = await axios.put(`${BASE_URL}/updatepassword`, { oldPassword, newPassword }, {
             headers: {
                 'Content-Type': 'application/json'
             },validateStatus: function (status) {
@@ -188,7 +189,7 @@ export const logoutUser = (showAlert) => async (dispatch) => {
             type: "LogoutUserRequest",
         });
 
-        const { data } = await axios.get("/api/v1/user/logout");
+        const { data } = await axios.get(`${BASE_URL}/logout`);
 
         dispatch({
             type: "LogoutUserSuccess",
@@ -211,7 +212,7 @@ export const deleteMyProfile = (showAlert) => async (dispatch) => {
             type: "DeleteProfileRequest",
         });
 
-        const { data } = await axios.delete("/api/v1/user/deleteaccount");
+        const { data } = await axios.delete(`${BASE_URL}/deleteaccount`);
 
         dispatch({
             type: "DeleteProfileSuccess",
