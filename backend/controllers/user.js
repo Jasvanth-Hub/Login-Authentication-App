@@ -29,7 +29,8 @@ exports.register = async (req, res) => {
             }
         })
 
-        const options = { expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), httpOnly: true }
+        const options = { expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), httpOnly: true,sameSite: 'None',secure: true
+        }
         const token = await user.generateToken()
 
         res.status(200).cookie("token", token, options).json({
@@ -71,7 +72,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        const options = { expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), httpOnly: true }
+        const options = { expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), httpOnly: true,sameSite: 'None',secure: true}
 
         const token = await user.generateToken()
 
@@ -95,7 +96,7 @@ exports.logOut = async (req, res) => {
 
         const user = await User.findById(req.user._id)
 
-        const options = { expires: new Date(Date.now()), httpOnly: true }
+        const options = { expires: new Date(Date.now()), httpOnly: true,sameSite: 'None',secure: true}
 
         res.status(200).cookie("token", null, options).json({
             success: true,
@@ -211,7 +212,7 @@ exports.deleteAccount = async (req, res) => {
 
         await User.deleteOne({ _id: req.user._id })
 
-        const options = { expires: new Date(Date.now()), httpOnly: true }
+        const options = { expires: new Date(Date.now()), httpOnly: true,sameSite: 'None',secure: true}
 
 
         res.cookie("token", null, options)

@@ -123,7 +123,8 @@ export const UpdateUser = (name, email, avatar) => async (dispatch) => {
         const { data } = await axios.put(`${BASE_URL}/updateprofile`, { name, email, avatar }, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            withCredentials: true
         })
 
         dispatch({
@@ -149,7 +150,9 @@ export const UpdatePassword = (oldPassword, newPassword) => async (dispatch) => 
         const response = await axios.put(`${BASE_URL}/updatepassword`, { oldPassword, newPassword }, {
             headers: {
                 'Content-Type': 'application/json'
-            },validateStatus: function (status) {
+            },
+            withCredentials: true,
+            validateStatus: function (status) {
                 return status < 500;
             }
         })
@@ -180,7 +183,9 @@ export const logoutUser = () => async (dispatch) => {
             type: "LogoutUserRequest",
         });
 
-        const { data } = await axios.get(`${BASE_URL}/logout`);
+        const { data } = await axios.get(`${BASE_URL}/logout`, {
+            withCredentials: true, // Ensure cookies are sent
+        });
 
         dispatch({
             type: "LogoutUserSuccess",
@@ -201,7 +206,9 @@ export const deleteMyProfile = () => async (dispatch) => {
             type: "DeleteProfileRequest",
         });
 
-        const { data } = await axios.delete(`${BASE_URL}/deleteaccount`);
+        const { data } = await axios.delete(`${BASE_URL}/deleteaccount`, {
+            withCredentials: true, // Ensure cookies are sent
+        });
 
         dispatch({
             type: "DeleteProfileSuccess",
