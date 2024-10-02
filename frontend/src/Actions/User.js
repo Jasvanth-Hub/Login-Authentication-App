@@ -15,6 +15,7 @@ export const loginUser = (email, password) => async (dispatch) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                withCredentials: true,
                 validateStatus: function (status) {
                     return status < 500;
                 },
@@ -49,6 +50,7 @@ export const loadUser = () => async (dispatch) => {
         })
 
         const response = await axios.get(`${BASE_URL}/myprofile`, {
+            withCredentials: true,
             validateStatus: function (status) {
                 return status < 500;
             },
@@ -87,6 +89,7 @@ export const registerUser = (name, email, password, avatar) => async (dispatch) 
             headers: {
                 'Content-Type': 'application/json'
             },
+            withCredentials: true,
             validateStatus: function (status) {
                 return status < 500;
             },

@@ -6,10 +6,13 @@ const cookieParser = require("cookie-parser")
 const app = express()
 
 app.use(cors({
-    origin: "https://login-authentication-app-z451.onrender.com", // Allow your frontend's URL
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-    credentials: true 
+    origin: "https://login-authentication-app-z451.onrender.com", // Frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Allow cookies to be sent
+    allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"], // Headers you need
+    exposedHeaders: ["set-cookie"] // Expose the set-cookie header
 }));
+
 
 
 
